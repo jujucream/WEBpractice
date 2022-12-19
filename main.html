@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서경타니 스타트하우스 카페</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <!--JS-->
+    <script src="js/lib/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+
+<body>
+
+    <div id="wrap">
+        <!-- S : header -->
+        <header>
+            <div class="header_inner">
+                <h1 class="logo"><a href="/" title="홈 바로가기"><!--img src="img/logo.png" alt="로고"/-->LOGO</a></h1>
+                <div class="gnb">
+                    <ul>
+                        <li><a href="#" target="_self"><h2>MENU</h2></a></li>
+                        <li><a href="#" target="_self"><h2>FAQ</h2></a></li>
+                        <li><a href="#" target="_self"><h2>NOTICE</h2></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- E :header -->
+
+        <!-- S : container -->
+            <div class="container">
+                <div id="fullpage">
+                    <!-- S : 1section -->
+                    <div class="section" id="section01" data-anchor="1stPage">
+                        <p>테스트입니다 1</p>
+                    </div>
+                    <!-- E : 1section -->
+
+                    <!-- S : 2section -->
+                    <div class="section" id="section02" data-anchor="2ndPage">
+                        <p>테스트입니다 2</p>
+                    </div>
+                    <!-- E : 2section -->
+
+                    <!-- S : 3section -->
+                    <div class="section" id="section03" data-anchor="3rdPage">
+                        <p>테스트입니다 3</p>
+                    </div>
+                    <!-- E : 3section -->
+                </div>
+            </div>
+        <!-- E : container -->
+    </div>
+
+        <!--S: 인트로-->
+        <div class="welcome-section content-hidden">
+            <div class="content-wrap">
+              <ul class="fly-in-text">
+                <li>I</li>
+                <li>N</li>
+                <li>T</li>
+                <li>R</li>
+                <li>O</li>
+              </ul>
+              <a href="#" class="enter-button">Enter</a>
+            </div>
+        </div>
+        <!--E: 인트로-->
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+				sectionsColor: ['#f2f2f2', '#999', '#666', '#333'],
+				anchors: ['1stPage', '2ndPage', '3rdPage'],
+				menu: '#menu',
+				continuousVertical: false,	  
+			});
+        });
+
+        $(function(){
+            var welcomSection = $('.welcome-section'),
+                enterButton = welcomSection.find('.enter-button');
+            
+            setTimeout(function(){
+                welcomSection.removeClass('content-hidden');
+            },800);
+            
+            enterButton.on('click',function(e){
+                e.preventDefault();
+                welcomSection.addClass('content-hidden').fadeOut();
+            })
+        });
+    </script>
+
+</body>
+</html>
