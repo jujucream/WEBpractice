@@ -29,6 +29,24 @@
                         <li><a href="#" target="_self"><h2>NOTICE</h2></a></li>
                     </ul>
                 </div>
+                <div class="sitemap">
+                    <div class="icon"></div>
+                </div>
+            </div>
+            <div class="sitemap_menu">
+                <nav class="sub">
+                    <ul>
+                        <li><a href="#">전체보기 테스트입니다</a>
+                            <ul>
+                                <li><a href="#">대분류 테스트</a>
+                                    <ul>
+                                        <li><a href="#">소분류 테스트 <span>(99)</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </header>
         <!-- E :header -->
@@ -76,7 +94,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-				sectionsColor: ['#f2f2f2', '#999', '#666', '#333'],
+				sectionsColor: ['#ccc', '#999', '#666', '#333'],
 				anchors: ['1stPage', '2ndPage', '3rdPage'],
 				menu: '#menu',
 				continuousVertical: false,	  
@@ -95,7 +113,38 @@
                 e.preventDefault();
                 welcomSection.addClass('content-hidden').fadeOut();
             })
+
+            $('.sitemap').click(function(){
+                $('.sitemap').toggleClass('active');
+            });
         });
+
+        $(function(){
+            $("header").on("click", ".sitemap", function(){
+                if ( $(this).hasClass("on") ){
+                    $(this).removeClass("on");
+                    $("header .sitemap_menu").removeClass("on");
+                    $("#blind").remove();
+                } else {
+                    $(this).addClass("on");
+                    $("header .sitemap_menu").addClass("on");
+                    $("header").append('<div id="blind" />').on("click", "#blind", function(){
+                        $(".sitemap").click();
+                    });
+                }
+            });
+
+            $(window).resize(function(){
+                if ( $(".sub").css("position") == "relative" ){
+                    if ( $("#blind").is(":visible") ){
+                        $("#blind").remove();
+                    }
+                    if ( $(".sitemap").hasClass("on") ){
+                        $(".sitemap").click();
+                    }
+                }
+            });
+	    });
     </script>
 
 </body>
